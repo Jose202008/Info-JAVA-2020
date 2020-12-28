@@ -36,12 +36,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        userRepository.deleteById(id); }
+        userRepository.deleteById(id); 
+    }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Usuario> findById(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id); 
     }
-    
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Usuario> findByCiudad(String ciudad) {
+        return userRepository.findByCiudad(ciudad); 
+    }
+
 }

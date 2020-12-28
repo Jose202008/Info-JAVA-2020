@@ -14,4 +14,5 @@ public interface UsuarioService {
     public Usuario save(Usuario usuario);
     public void deleteById (Long id);
     public Optional<Usuario> findById (Long id);
+    public List<Usuario> findByCiudad(String ciudad);
 }

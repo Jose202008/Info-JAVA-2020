@@ -1,6 +1,7 @@
 package com.nuestroblog.blogadmin.controller;
 
 import com.nuestroblog.blogadmin.entity.Usuario;
+import com.nuestroblog.blogadmin.repository.UsuarioRepository;
 import com.nuestroblog.blogadmin.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +23,23 @@ public class UsuarioController {
     //Alta de usuario
     @PostMapping
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario)); }
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario)); 
+    }
 
     //Consultar todos los usuarios de la tabla
     @GetMapping()
     public ResponseEntity<?> getUsuario() {
-        return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK); }
+        return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK); 
+    }
 
     //Baja de usuario indicando id por path
     @DeleteMapping("/{usuarioId}")
     public ResponseEntity<?> deleteUsuario (@PathVariable Long usuarioId) {
         usuarioService.deleteById(usuarioId);
-        return ResponseEntity.ok().build(); }
+        return ResponseEntity.ok().build(); 
+    }
 
-    //Modificación de un usuario segun id
+    //Modificación de un usuario indicando id por path
     @PutMapping("/{usuarioId}")
     public ResponseEntity<?> editUsuario (@RequestBody Usuario usuarioDetails, @PathVariable Long usuarioId) {
         Optional<Usuario> usuario = usuarioService.findById(usuarioId);
@@ -49,6 +53,14 @@ public class UsuarioController {
         usuario.get().setCiudad(usuarioDetails.getCiudad());
         usuario.get().setProvincia(usuarioDetails.getProvincia());
         usuario.get().setPais(usuarioDetails.getPais());
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario.get())); }
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario.get())); 
+    }
+
+    //Consultar usuarios por ciudad
+    @GetMapping("/de")
+    public ResponseEntity<?> usuarioPorCiudad (@RequestParam String ciudad) {
+        List<Usuario> usuario = usuarioService.findByCiudad(ciudad);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
 
 }
