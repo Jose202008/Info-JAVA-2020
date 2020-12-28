@@ -37,5 +37,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional
     public void deleteById(Long id) {
         userRepository.deleteById(id); }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Usuario> findById(Long id) {
+        return userRepository.findById(id);
+    }
     
 }

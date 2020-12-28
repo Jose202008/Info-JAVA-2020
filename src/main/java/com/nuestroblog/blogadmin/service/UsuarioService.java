@@ -13,4 +13,5 @@ public interface UsuarioService {
     public Page<Usuario> findAll(Pageable pageable);
     public Usuario save(Usuario usuario);
     public void deleteById (Long id);
+    public Optional<Usuario> findById (Long id);
 }

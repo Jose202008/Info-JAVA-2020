@@ -33,7 +33,22 @@ public class UsuarioController {
     @DeleteMapping("/{usuarioId}")
     public ResponseEntity<?> deleteUsuario (@PathVariable Long usuarioId) {
         usuarioService.deleteById(usuarioId);
-        return ResponseEntity.ok().build();
-    }
+        return ResponseEntity.ok().build(); }
+
+    //Modificación de un usuario segun id
+    @PutMapping("/{usuarioId}")
+    public ResponseEntity<?> editUsuario (@RequestBody Usuario usuarioDetails, @PathVariable Long usuarioId) {
+        Optional<Usuario> usuario = usuarioService.findById(usuarioId);
+        if (!usuario.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        usuario.get().setNombre(usuarioDetails.getNombre());
+        usuario.get().setApellido(usuarioDetails.getApellido());
+        usuario.get().setEmail(usuarioDetails.getEmail());
+        usuario.get().setPassword(usuarioDetails.getPassword());
+        usuario.get().setCiudad(usuarioDetails.getCiudad());
+        usuario.get().setProvincia(usuarioDetails.getProvincia());
+        usuario.get().setPais(usuarioDetails.getPais());
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario.get())); }
 
 }
