@@ -19,14 +19,21 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    //crear un usuario nuevo
+    //Alta de usuario
     @PostMapping
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario)); }
 
-    //obtener todos los usuarios
+    //Consultar todos los usuarios de la tabla
     @GetMapping()
     public ResponseEntity<?> getUsuario() {
         return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK); }
+
+    //Baja de usuario indicando id por path
+    @DeleteMapping("/{usuarioId}")
+    public ResponseEntity<?> deleteUsuario (@PathVariable Long usuarioId) {
+        usuarioService.deleteById(usuarioId);
+        return ResponseEntity.ok().build();
+    }
 
 }
