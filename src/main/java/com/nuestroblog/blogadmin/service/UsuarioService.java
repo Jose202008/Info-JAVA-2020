@@ -15,4 +15,5 @@ public interface UsuarioService {
     public void deleteById (Long id);
     public Optional<Usuario> findById (Long id);
     public List<Usuario> findByCiudad(String ciudad);
+    public List<Usuario> findByFechaIsAfter(LocalDateTime fecha);
 }

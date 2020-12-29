@@ -51,4 +51,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return userRepository.findByCiudad(ciudad); 
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Usuario> findByFechaIsAfter(LocalDateTime fecha) {
+        return userRepository.findByFechaIsAfter(fecha); 
+    }
+
 }

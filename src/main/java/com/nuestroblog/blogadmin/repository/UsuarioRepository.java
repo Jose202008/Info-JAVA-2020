@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findByCiudad(String ciudad);
-    List<Usuario> findByFecha(LocalDateTime fecha);
+    List<Usuario> findByFechaIsAfter(LocalDateTime fecha);
 }
