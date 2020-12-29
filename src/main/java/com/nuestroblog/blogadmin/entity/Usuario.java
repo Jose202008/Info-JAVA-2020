@@ -3,7 +3,7 @@ package com.nuestroblog.blogadmin.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Usuario {
@@ -21,7 +21,7 @@ public class Usuario {
     private String provincia;
     private String pais;
     @CreationTimestamp
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -47,6 +47,6 @@ public class Usuario {
     public String getPais() { return pais; }
     public void setPais(String pais) { this.pais = pais; }
 
-    public LocalDateTime getFecha() { return fecha; }
-    public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }
+    public LocalDate getFecha() { return fecha; }
+    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
 }

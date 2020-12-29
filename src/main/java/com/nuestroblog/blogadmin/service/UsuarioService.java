@@ -3,8 +3,8 @@ package com.nuestroblog.blogadmin.service;
 import com.nuestroblog.blogadmin.entity.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
- 
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,5 +15,5 @@ public interface UsuarioService {
     public void deleteById (Long id);
     public Optional<Usuario> findById (Long id);
     public List<Usuario> findByCiudad(String ciudad);
-    public List<Usuario> findByFechaIsAfter(LocalDateTime fecha);
+    public List<Usuario> findByFechaIsAfter(LocalDate fecha);
 }

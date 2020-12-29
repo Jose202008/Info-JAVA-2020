@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +67,7 @@ public class UsuarioController {
 
     //Consulta todos los usuarios creados despues de una fecha dada
     @GetMapping("/desde") // ~ /api/v1/usuario/desde?fecha=2020/12/28
-    public ResponseEntity<?> buscarUsuariosPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime fecha) {
+    public ResponseEntity<?> buscarUsuariosPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         List<Usuario> usuario = usuarioService.findByFechaIsAfter(fecha);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
