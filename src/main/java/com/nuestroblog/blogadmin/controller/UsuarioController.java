@@ -47,13 +47,27 @@ public class UsuarioController {
         if (!usuario.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        usuario.get().setNombre(usuarioDetails.getNombre());
-        usuario.get().setApellido(usuarioDetails.getApellido());
-        usuario.get().setEmail(usuarioDetails.getEmail());
-        usuario.get().setPassword(usuarioDetails.getPassword());
-        usuario.get().setCiudad(usuarioDetails.getCiudad());
-        usuario.get().setProvincia(usuarioDetails.getProvincia());
-        usuario.get().setPais(usuarioDetails.getPais());
+        if (usuarioDetails.getNombre() != null) {
+            usuario.get().setNombre(usuarioDetails.getNombre());
+        }
+        if (usuarioDetails.getApellido() != null) {
+            usuario.get().setApellido(usuarioDetails.getApellido());
+        }
+        if (usuarioDetails.getEmail() != null) {
+            usuario.get().setEmail(usuarioDetails.getEmail());
+        }
+        if (usuarioDetails.getPassword() != null) {
+            usuario.get().setPassword(usuarioDetails.getPassword());
+        }
+        if (usuarioDetails.getCiudad() != null) {
+            usuario.get().setCiudad(usuarioDetails.getCiudad());
+        }
+        if (usuarioDetails.getProvincia() != null) {
+            usuario.get().setProvincia(usuarioDetails.getProvincia());
+        }
+        if (usuarioDetails.getPais() != null) {
+            usuario.get().setPais(usuarioDetails.getPais());
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario.get())); 
     }
 

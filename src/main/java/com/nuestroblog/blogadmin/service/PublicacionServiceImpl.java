@@ -28,4 +28,15 @@ public class PublicacionServiceImpl implements PublicacionService{
         return publicacionRepository.save(publicacion);
     }
 
+    @Override
+    @Transactional
+    public void deleteById(Long id) {publicacionRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Publicacion> findById(Long id) {
+        return publicacionRepository.findById(id);
+    }
+
 }

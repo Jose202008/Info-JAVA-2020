@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface PublicacionService {
     public Iterable<Publicacion> findAll();
     public Publicacion save(Publicacion publicacion);
+    public void deleteById(Long id);
+    public Optional<Publicacion> findById(Long id);
 }

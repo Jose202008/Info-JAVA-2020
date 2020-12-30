@@ -32,4 +32,37 @@ public class PublicacionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(publicacionService.save(publicacion));
     }
 
+    //BAJA de publicacion indicando id por path
+    @DeleteMapping("/{publicacionId}")
+    public ResponseEntity<?> deletePublicacion(@PathVariable Long publicacionId) {
+        publicacionService.deleteById(publicacionId);
+        return ResponseEntity.ok().build();
+    }
+
+    //MODIFICACIÓN de una publicación indicando id por path
+    @PutMapping("/{publicacionId}")
+    public ResponseEntity<?> editPublicacion(@RequestBody Publicacion publicacionDetails, @PathVariable Long publicacionId) {
+        Optional<Publicacion> publicacion = publicacionService.findById(publicacionId);
+        if (!publicacion.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        if (publicacionDetails.getTitulo() != null) {
+            publicacion.get().setTitulo(publicacionDetails.getTitulo());
+        }
+        if (publicacionDetails.getDescripcion() != null) {
+            publicacion.get().setDescripcion(publicacionDetails.getDescripcion());
+        }
+        if (publicacionDetails.getContenido() != null) {
+            publicacion.get().setContenido(publicacionDetails.getContenido());
+        }
+        if (publicacionDetails.getAutor() != null) {
+            publicacion.get().setAutor(publicacionDetails.getAutor());
+        }
+        if (publicacionDetails.getPublicado() != null) {
+            publicacion.get().setPublicado(publicacionDetails.getPublicado());
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(publicacionService.save(publicacion.get()));
+    }
+
+
 }
