@@ -21,27 +21,27 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    //Alta de usuario
-    @PostMapping
+    //ALTA de usuario
+    @PostMapping // ~ /api/v1/usuario
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario)); 
     }
 
-    //Consultar todos los usuarios de la tabla
-    @GetMapping()
+    //CONSULTA - obtener todos los usuarios de la tabla
+    @GetMapping() // ~ /api/v1/usuario
     public ResponseEntity<?> getUsuario() {
         return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK); 
     }
 
-    //Baja de usuario indicando id por path
-    @DeleteMapping("/{usuarioId}")
+    //BAJA de usuario indicando id por path
+    @DeleteMapping("/{usuarioId}") // ~ /api/v1/usuario/1
     public ResponseEntity<?> deleteUsuario (@PathVariable Long usuarioId) {
         usuarioService.deleteById(usuarioId);
         return ResponseEntity.ok().build(); 
     }
 
-    //Modificación de un usuario indicando id por path
-    @PutMapping("/{usuarioId}")
+    //MODIFICACIÓN de un usuario indicando id por path
+    @PutMapping("/{usuarioId}") // ~ /api/v1/usuario/1
     public ResponseEntity<?> editUsuario (@RequestBody Usuario usuarioDetails, @PathVariable Long usuarioId) {
         Optional<Usuario> usuario = usuarioService.findById(usuarioId);
         if (!usuario.isPresent()) {
