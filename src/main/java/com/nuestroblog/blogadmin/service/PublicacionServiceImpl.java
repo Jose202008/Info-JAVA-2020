@@ -23,6 +23,12 @@ public class PublicacionServiceImpl implements PublicacionService{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Page<Publicacion> findAll(Pageable pageable) {
+        return publicacionRepository.findAll(pageable);
+    }
+
+    @Override
     @Transactional
     public Publicacion save(Publicacion publicacion) {
         return publicacionRepository.save(publicacion);
@@ -37,6 +43,16 @@ public class PublicacionServiceImpl implements PublicacionService{
     @Transactional(readOnly = true)
     public Optional<Publicacion> findById(Long id) {
         return publicacionRepository.findById(id);
+    }
+
+    @Override
+    public List<Publicacion> findByTitulo(String titulo) {
+        return publicacionRepository.findByTitulo(titulo);
+    }
+
+    @Override
+    public List<Publicacion> findByPublicado(Boolean publicado) {
+        return publicacionRepository.findByPublicado(publicado);
     }
 
 }

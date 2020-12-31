@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "7dccd9c5-943a-4237-8df7-952c308f2a0a",
+		"name": "Administra Blog",
+		"description": "Pruebas de la API hechas con Java-Spring por José Durán.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Usuario GET - Consultar todos los usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario"
+							]
+						},
+						"description": "Consultar todos los usuarios api/v1/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario POST - Agregar nuevo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Perez\",\r\n    \"email\": \"jperez@gmail.com\",\r\n    \"password\": 123456,\r\n    \"ciudad\": \"Resistencia\",\r\n    \"provincia\": \"Chaco\",\r\n    \"pais\": \"Argentina\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario"
+							]
+						},
+						"description": "Ingresar datos a un nuevo registro de la tabla Usuario."
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario DELETE - Borrar un usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"1"
+							]
+						},
+						"description": "Eliminar un usuario indicando su id por parámetro de la web."
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario PUT - Modificar datos de un usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"1"
+							]
+						},
+						"description": "Coloca el contenido del cuerpo en el registro pasado por parámetro."
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario GET - Consultar usuarios por ciudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario?ciudad=Resistencia\n",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "ciudad",
+									"value": "Resistencia\n"
+								}
+							]
+						},
+						"description": "Mostrar todos los usuarios de una ciudad indicada"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario GET - Consultar usuarios por fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/v1/usuario/desde?fecha=2020-12-27T00:00:00",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"desde"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2020-12-27T00:00:00"
+								}
+							]
+						},
+						"description": "Mostrar todos los usuarios de una ciudad indicada"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicacion",
+			"item": [
+				{
+					"name": "Publicacion GET - Mostrar las publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Mostrar todas las publicaciones."
+					},
+					"response": []
+				},
+				{
+					"name": "Publicacion POST - Crear nueva",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Prueba\",\r\n    \"descripcion\": \"Estoy probando\",\r\n    \"contenido\": \"Vamos a ver\",\r\n    \"autor\": \"jperez@gmail.com\",\r\n    \"publicado\": \"False\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/publicacion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"publicacion"
+							]
+						},
+						"description": "Crear nueva publicación."
+					},
+					"response": []
+				},
+				{
+					"name": "Publicacion DELETE - Borrar una publicación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/publicacion/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"publicacion",
+								"1"
+							]
+						},
+						"description": "Elimina la publicación pasada como parámetro."
+					},
+					"response": []
+				},
+				{
+					"name": "Publicacion PUT - Modificar publicación",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Spring rest\",\r\n    \"descripcion\": \"Spring Framework\",\r\n    \"contenido\": \"Spring es un framework para el desarrollo de aplicaciones y contenedor de inversión de control, de código abierto para la plataforma Java.​\",\r\n    \"autor\": \"jduran@gmail.com\",\r\n    \"publicado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/publicacion/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"publicacion",
+								"2"
+							]
+						},
+						"description": "Cambia el contenido de una publicación."
+					},
+					"response": []
+				},
+				{
+					"name": "Publicación GET - Buscar en título",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Busca una publicación con el título ingresado."
+					},
+					"response": []
+				},
+				{
+					"name": "Publicacion GET - Buscar no publicadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Filtrar publicaciones no publicadas."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentario",
+			"item": [
+				{
+					"name": "Comentario GET - Consultar todos los comentarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/comentario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario"
+							]
+						},
+						"description": "Muestra todos los comentarios."
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario POST - Crear comentario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idPubli\": 2,\r\n        \"autor\": \"jperez@gmail.com\",\r\n        \"comentarios\": \"Todo lo que tengas para decir\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/comentario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario"
+							]
+						},
+						"description": "Crea nuevo comentario."
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario DELETE - Borrar un comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/comentario/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"1"
+							]
+						},
+						"description": "Elimina el comentario pasado como parámetro."
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario PUT - Modificar comentario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPubli\":2,\r\n    \"autor\":\"jperez@hotmail.com\",\r\n    \"comentarios\":\"Todo lo que tengas para decir.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/comentario/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"1"
+							]
+						},
+						"description": "Cambia el contenido de un comentario."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

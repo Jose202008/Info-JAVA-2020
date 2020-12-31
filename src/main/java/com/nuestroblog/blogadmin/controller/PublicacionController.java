@@ -33,14 +33,14 @@ public class PublicacionController {
     }
 
     //BAJA de publicacion indicando id por path
-    @DeleteMapping("/{publicacionId}")
+    @DeleteMapping("/{publicacionId}") // ~ /api/v1/publicacion/1
     public ResponseEntity<?> deletePublicacion(@PathVariable Long publicacionId) {
         publicacionService.deleteById(publicacionId);
         return ResponseEntity.ok().build();
     }
 
     //MODIFICACIÓN de una publicación indicando id por path
-    @PutMapping("/{publicacionId}")
+    @PutMapping("/{publicacionId}") // ~ /api/v1/publicacion/1
     public ResponseEntity<?> editPublicacion(@RequestBody Publicacion publicacionDetails, @PathVariable Long publicacionId) {
         Optional<Publicacion> publicacion = publicacionService.findById(publicacionId);
         if (!publicacion.isPresent()) {
@@ -64,5 +64,18 @@ public class PublicacionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(publicacionService.save(publicacion.get()));
     }
 
+    //CONSULTA - obtener todas las publicaciones que contengan una palabra dada en el título
+    @GetMapping("/buscar") // ~ /api/v1/publicacion/buscar?titulo=palabra
+    public ResponseEntity<?> PublicacionPorTitulo (@RequestParam String titulo) {
+        List<Publicacion> publicacionTitulo = publicacionService.findByTitulo(titulo);
+        return new ResponseEntity<>(publicacionTitulo, HttpStatus.OK);
+    }
+
+    //CONSULTA - obtener todas las publicaciones sin publicar
+    @GetMapping("/filtro") // ~ /api/v1/publicacion/filtro?publicado=false
+    public ResponseEntity<?> PublicacionPublicada (@RequestParam Boolean publicado) {
+        List<Publicacion> publicacionPublicada = publicacionService.findByPublicado(publicado);
+        return new ResponseEntity<>(publicacionPublicada, HttpStatus.OK);
+    }
 
 }

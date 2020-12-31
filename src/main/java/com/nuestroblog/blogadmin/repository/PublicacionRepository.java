@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface PublicacionRepository extends JpaRepository<Publicacion, Long> {
-
+    List<Publicacion> findByTitulo(String titulo);
+    List<Publicacion> findByPublicado(Boolean publicado);
 }

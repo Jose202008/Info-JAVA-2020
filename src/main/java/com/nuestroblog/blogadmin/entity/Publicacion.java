@@ -15,7 +15,7 @@ public class Publicacion {
     private String descripcion;
     private String contenido;
     @CreationTimestamp
-    private LocalDateTime fechac;
+    private LocalDateTime fechap;
     @Column(nullable = false)
     private String autor;
     private Boolean publicado;
@@ -32,8 +32,8 @@ public class Publicacion {
     public String getContenido() { return contenido; }
     public void setContenido(String contenido) { this.contenido = contenido; }
 
-    public LocalDateTime getFechac() { return fechac; }
-    public void setFechac( LocalDateTime fechac) { this.fechac = fechac; }
+    public LocalDateTime getFechap() { return fechap; }
+    public void setFechap( LocalDateTime fechap) { this.fechap = fechap; }
 
     public String getAutor() { return autor; }
     public void setAutor(String autor) { this.autor = autor; }
